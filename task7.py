@@ -2,3 +2,12 @@
 # Пример:
 # Для n=4 -> [2, 2.25, 2.37, 2.44]
 # Сумма 9.06
+
+n = int(input('Введите число: '))
+
+def result(n):
+    return [round((1 + 1 / n)**n, 2) for n in range(1, n + 1)]
+
+num = result(n)
+print(num)
+print(sum(num))
