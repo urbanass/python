@@ -18,5 +18,9 @@ for i in range(5):
             max = x
         if x < min:
             min = x
+# res = sum([x % 1 for x in my_list])
+# ressred = res/len(my_list)
+# print(round(res,3))
+# print(ressred)
 print(round(max-min,3))
 print(max-min) # Просьба напомнить на семинаре почему без округления разница между 2 числами имеет так много "0" и цифрой в конце
