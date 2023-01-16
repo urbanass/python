@@ -21,16 +21,16 @@ while total != 0:
         if one1 > 28:
             one1 = int(input('Недопутимое число,Вы можите взять 1-28 конфет: '))
         total = total - one1
-        print(f"осталось:{total}")
-        if total > 28:
+        print(f'осталось:{total}')
+        if total > 0:
             one2 = int(input('Вы можите взять 1-28 конфет: '))
             if one2 > 28:
-                one2 = int(input('Недопутимое число,Вы можите взять 1-28 конфет: '))
-            total = total - one2
-            print(f"осталось:{total}")
-if one == 1:
-    print(f"победил: {name2} Поздравляем!!!")
-else:
-    print(f"победил: {name1} Поздравляем!!!")
-
-#-------------------------------------------------------------
+                 one2 = int(input('Недопутимое число,Вы можите взять 1-28 конфет: '))
+        total = total - one2
+        print(f"осталось:{total}")
+        if total == 0:
+            if one != 1:
+                print(f'победил: {name1} Поздравляем!!!')
+            else:
+                print(f'победил: {name2} Поздравляем!!!')  
+   
