@@ -18,13 +18,13 @@ total = int(input('Введите кол-во конфет: '))
 while total != 0:
     if total > 0:
         one1 = int(input('Вы можите взять 1-28 конфет: '))
-        if one1 > 28:
+        if one1 > 28 or one1 < 1:
             one1 = int(input('Недопутимое число,Вы можите взять 1-28 конфет: '))
         total = total - one1
         print(f'осталось:{total}')
         if total > 0:
             one2 = int(input('Вы можите взять 1-28 конфет: '))
-            if one2 > 28:
+            if one2 > 28 or one2 < 1:
                  one2 = int(input('Недопутимое число,Вы можите взять 1-28 конфет: '))
         total = total - one2
         print(f"осталось:{total}")
