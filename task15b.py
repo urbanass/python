@@ -8,15 +8,15 @@ name1 = input('Введите ваше имя: ')
 name2 = 'iRobot'
 if random.randrange(1, 3) == 1:
 	print('Первым ходит игрок: ' + name1)
-	next_Move = name1
+	nextMove = name1
 else:
-	next_Move = name2
+	nextMove = name2
 	print('Первым ходит игрок: ' + name2)
 
 total = int(input('Введите кол-во конфет в общей куче: '))
 
 while total > 0:
-	if next_Move == name1:
+	if nextMove == name1:
 		if total >= 28:
 			move = int(input(f'{name1}, сколько конфет вы берете из общей кучи (от 1 до 28): '))
 		else:
@@ -24,7 +24,7 @@ while total > 0:
 		if move <= total and move > 0:
 			total = total - move
 			print(f'В общей куче осталось {total} конфет')
-			next_Move = name2   
+			nextMove = name2   
 		else:
 			print(f'{name1}, ввели некорректное значение, повторите ход.')
 	else:
@@ -40,8 +40,8 @@ while total > 0:
 		print(f'{name2} берет {move} конфет')
 		total = total - move
 		print(f'В общей куче осталось {total} конфет')	
-		next_Move = name1
-if next_Move == name2:
+		nextMove = name1
+if nextMove == name2:
 	print(f'{name1}, вы победили!')
 else:
 	print(f'{name2}, вы победили!')
