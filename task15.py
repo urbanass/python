@@ -7,33 +7,33 @@
 import random
 name1 = input('Игрок №1 Введите ваше имя: ')
 name2 = input('Игрок №2 Введите ваше имя: ')
-one = random.randrange(1, 3)
-if one == 1:
+
+if random.randrange(1, 3) == 1:
     print('Ходит игрок: ' + name1)
-    next_Move = name1
+    nextMove = name1
 else:
     print('Ходит игрок: ' + name2)
-    next_Move = name2
+    nextMove = name2
 
 total = int(input('Введите кол-во конфет в общей куче: '))
 
 while total > 0:
     if total >= 28:
         move = int(
-            input(f'{next_Move}, сколько вы берете конфет из общей кучи (от 1 до 28): '))
+            input(f'{nextMove}, сколько вы берете конфет из общей кучи (от 1 до 28): '))
     else:
         move = int(input(
-            f'{next_Move}, сколько вы берете конфет из общей кучи (от 1 до {total}): '))
-    if move <= total and move > 0:
+            f'{nextMove}, сколько вы берете конфет из общей кучи (от 1 до {total}): '))
+    if move <= total and move > 0 and move <= 28:
         total = total - move
         print(f'В общей куче осталось {total} конфет')
-        if next_Move == name1:
-            next_Move = name2
+        if nextMove == name1:
+            nextMove = name2
         else:
-            next_Move = name1
+            nextMove = name1
     else:
-        print(f'{next_Move}, ввели некорректное значение, повторите ход.')
-if next_Move == name2:
+        print(f'{nextMove}, ввели некорректное значение, повторите ход.')
+if nextMove == name2:
     print(f'{name1}, вы победили!')
 else:
     print(f'{name2}, вы победили!')
