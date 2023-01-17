@@ -3,33 +3,37 @@
 # a) Добавьте игру против бота
 # b) Подумайте как наделить бота 'интеллектом'
 
-# -------------------------------------------------------------
+
 import random
 name1 = input('Игрок №1 Введите ваше имя: ')
 name2 = input('Игрок №2 Введите ваше имя: ')
 one = random.randrange(1, 3)
-print(one)
 if one == 1:
     print('Ходит игрок: ' + name1)
+    next_Move = name1
 else:
     print('Ходит игрок: ' + name2)
-total = int(input('Введите кол-во конфет: '))
+    next_Move = name2
 
-while total != 0:
-    if total > 0:
-        one1 = int(input('Вы можите взять 1-28 конфет: '))
-        if one1 > 28 or one1 < 1:
-            one1 = int(input('Недопутимое число,Вы можите взять 1-28 конфет: '))
-        total = total - one1
-        print(f'осталось:{total}')
-        if total > 28:
-            one2 = int(input('Вы можите взять 1-28 конфет: '))
-            if one2 > 28 or one2 < 1:
-                one2 = int(input('Недопутимое число,Вы можите взять 1-28 конфет: '))
-            total = total - one2
-            print(f"осталось:{total}")
-        if total <= 28 and total != 0:
-           print(f'Вы победите если возьмете : {total} конфет')
-        if total == 0:
-            print('Вы победили')
-            
+total = int(input('Введите кол-во конфет в общей куче: '))
+
+while total > 0:
+    if total >= 28:
+        move = int(
+            input(f'{next_Move}, сколько вы берете конфет из общей кучи (от 1 до 28): '))
+    else:
+        move = int(input(
+            f'{next_Move}, сколько вы берете конфет из общей кучи (от 1 до {total}): '))
+    if move <= total and move > 0:
+        total = total - move
+        print(f'В общей куче осталось {total} конфет')
+        if next_Move == name1:
+            next_Move = name2
+        else:
+            next_Move = name1
+    else:
+        print(f'{next_Move}, ввели некорректное значение, повторите ход.')
+if next_Move == name2:
+    print(f'{name1}, вы победили!')
+else:
+    print(f'{name2}, вы победили!')
