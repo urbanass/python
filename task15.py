@@ -3,7 +3,6 @@
 # a) Добавьте игру против бота
 # b) Подумайте как наделить бота 'интеллектом'
 
-
 import random
 name1 = input('Игрок №1 Введите ваше имя: ')
 name2 = input('Игрок №2 Введите ваше имя: ')
@@ -27,13 +26,11 @@ while total > 0:
     if move <= total and move > 0 and move <= 28:
         total = total - move
         print(f'В общей куче осталось {total} конфет')
-        if nextMove == name1:
-            nextMove = name2
-        else:
-            nextMove = name1
+        if total > 0:
+            if nextMove == name1:
+                nextMove = name2
+            else:
+                nextMove = name1
     else:
         print(f'{nextMove}, ввели некорректное значение, повторите ход.')
-if nextMove == name2:
-    print(f'{name1}, вы победили!')
-else:
-    print(f'{name2}, вы победили!')
+print(f'{nextMove}, Вы победили.')
