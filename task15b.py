@@ -3,39 +3,45 @@
 # a) Добавьте игру против бота
 # b) Подумайте как наделить бота 'интеллектом'
 
-import random 
+import random
+name1 = input('Введите ваше имя: ')
+name2 = 'iRobot'
+if random.randrange(1, 3) == 1:
+	print('Первым ходит игрок: ' + name1)
+	next_Move = name1
+else:
+	next_Move = name2
+	print('Первым ходит игрок: ' + name2)
 
-total = int(input('Введите кол-во конфет: '))
-max = 28
-name1 = input('Игрок №1 Введите ваше имя: ')
-name2 = 'iBot'
-players = [name1, name2]
-
-one = random.randrange(1, 3)
-
-print(f'{players[one-1]} Ваш ход')
+total = int(input('Введите кол-во конфет в общей куче: '))
 
 while total > 0:
-    one += 1
-    if players[one % 2] == 'iBot':
-        print(f'Ходит {players[one%2]}')
-
-        if total < 29:
-            motion = total
-        else:
-            logic = total//28
-            motion = total - ((logic*max)+1)
-            if motion == -1:
-                motion = max - 1
-            if motion == 0:
-                motion = max
-        while motion > 28 or motion < 1:
-            motion = randint(1, 28)
-        print(motion)
-    else:
-        motion = int(input(f'ходи,{players[one%2]} Осталось {total}: '))
-        while motion > max or motion < 1:
-            motion = int(input('Недопутимое число,Вы можите взять 1-28 конфет: '))
-    total = total - motion
-
-print(f'осталось {total} Победил {players[one%2]}')
+	if next_Move == name1:
+		if total >= 28:
+			move = int(input(f'{name1}, сколько конфет вы берете из общей кучи (от 1 до 28): '))
+		else:
+			move = int(input(f'{name1}, сколько конфет вы берете из общей кучи (от 1 до {total}): '))
+		if move <= total and move > 0:
+			total = total - move
+			print(f'В общей куче осталось {total} конфет')
+			next_Move = name2   
+		else:
+			print(f'{name1}, ввели некорректное значение, повторите ход.')
+	else:
+		if total > 28:
+			if (total % 28) > 1:
+				move = (total % 28) - 1
+			elif (total % 28) == 0:
+				move = 27
+			else:
+				move = random.randrange(1, 29)
+		else:
+			move = total
+		print(f'{name2} берет {move} конфет')
+		total = total - move
+		print(f'В общей куче осталось {total} конфет')	
+		next_Move = name1
+if next_Move == name2:
+	print(f'{name1}, вы победили!')
+else:
+	print(f'{name2}, вы победили!')
