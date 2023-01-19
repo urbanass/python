@@ -21,9 +21,9 @@ while total > 0:
 			move = int(input(f'{name1}, сколько конфет вы берете из общей кучи (от 1 до 28): '))
 		else:
 			move = int(input(f'{name1}, сколько конфет вы берете из общей кучи (от 1 до {total}): '))
-		if move <= total and move > 0:
+		if move <= total and move > 0 and move <= 28:
 			total = total - move
-			print(f'В общей куче осталось {total} конфет')
+			#print(f'В общей куче осталось {total} конфет')
 			nextMove = name2   
 		else:
 			print(f'{name1}, ввели некорректное значение, повторите ход.')
@@ -39,8 +39,8 @@ while total > 0:
 			move = total
 		print(f'{name2} берет {move} конфет')
 		total = total - move
-		print(f'В общей куче осталось {total} конфет')	
 		nextMove = name1
+	print(f'В общей куче осталось {total} конфет')	
 if nextMove == name2:
 	print(f'{name1}, вы победили!')
 else:
